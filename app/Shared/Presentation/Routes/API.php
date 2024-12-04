@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', [TestController::class, 'index']);
 
+Route::get('/test/get/users', [TestController::class, 'getUsers']);
+
 Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/auth/vk', [AuthenticationController::class, 'vk']);
