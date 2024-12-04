@@ -14,11 +14,14 @@ final readonly class CreateUserAPI implements CreateUserAPIContract
         private API $createUserAPI
     ) {
     }
-    
+
     public function createUser(VKAuthentication $authentication): VKAuthentication
     {
-        $response = $this->createUserAPI->createFromData($authentication->getName());
-        if ($response->status() != 200) {
+        $response = $this->createUserAPI
+            ->createFromData($authentication->getName())
+            ->getData(true)['data'];
+        
+        if ($response['status'] != 200) {
             throw new CreateUserAPIException('Error creating user');
         }
 
