@@ -9,7 +9,8 @@ use App\User\Presentation\API\Templates\RequestBaseTemplate;
 final readonly class RequestTemplate extends RequestBaseTemplate
 {
     public function __construct(
-        public ?string $name,
+        public mixed $name,
+        public mixed $vkid,
     ) {
     }
 
@@ -17,11 +18,15 @@ final readonly class RequestTemplate extends RequestBaseTemplate
     {
         return [
             'name' => $this->name,
+            'vkid' => $this->vkid,
         ];
     }
 
     public static function fromArray(array $data): self
     {
-        return new self($data['name'] ?? null);
+        return new self(
+            $data['name'] ?? null,
+            $data['vkid'] ?? null
+        );
     }
 }

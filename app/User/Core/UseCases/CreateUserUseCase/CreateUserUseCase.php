@@ -6,8 +6,8 @@ namespace App\User\Core\UseCases\CreateUserUseCase;
 
 use App\User\Core\Contracts\Database\Repository\UserRepository\UserRepositoryContract;
 use App\User\Core\Domain\Entity\User\User;
-use App\User\Core\Domain\Entity\User\ValueObject\CreateUserValueObject;
-use App\User\Core\Domain\Entity\User\ValueObject\NameValueObject;
+use App\User\Core\Domain\Entity\User\ValueObject\RequestValueObject\CreateUserRequestValueObject;
+use App\User\Core\Domain\Entity\User\ValueObject\ResponseValueObject\CreateUserResponseValueObject;
 use App\User\Infrastructure\Database\Repository\UserRepository\UserRepositoryException;
 
 final readonly class CreateUserUseCase implements CreateUserUseCaseContract
@@ -17,20 +17,28 @@ final readonly class CreateUserUseCase implements CreateUserUseCaseContract
     ) {
     }
 
-    public function createUser(NameValueObject $name): CreateUserValueObject
+    public function createUser(CreateUserRequestValueObject $valueObject): CreateUserResponseValueObject
     {
         try {
             $this->userRepository->create(
-                new User($name->getName())
+                new User(
+                    $valueObject->getName(),
+                    $valueObject->getVkid()
+                )
             );
-            return new CreateUserValueObject(
+            return new CreateUserResponseValueObject(
                 true,
-                "OK"
+                json_encode([
+                    "message" => "OK",
+                ])
             );
         } catch (UserRepositoryException $e) {
-            return new CreateUserValueObject(
+            return new CreateUserResponseValueObject(
                 false,
-                "Error"
+                json_encode([
+                    "message" => "Create user failed",
+                ]),
+                500
             );
         }
     }

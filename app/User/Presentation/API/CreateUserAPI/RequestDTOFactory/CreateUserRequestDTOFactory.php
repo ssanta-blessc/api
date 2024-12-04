@@ -17,6 +17,9 @@ final readonly class CreateUserRequestDTOFactory implements CreateUserRequestDTO
     public function create(RequestTemplate $data): CreateUserRequestDTO
     {
         $this->validation->validate($data);
-        return CreateUserRequestDTO::fromArray($data->toArray());
+        return new CreateUserRequestDTO(
+            $data->name,
+            (int)$data->vkid
+        );
     }
 }

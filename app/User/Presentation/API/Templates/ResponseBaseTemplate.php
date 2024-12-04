@@ -19,6 +19,4 @@ abstract class ResponseBaseTemplate
     {
         return json_encode($this->responseArray);
     }
-
-    public abstract static function fromArray(array $data): self;
 }

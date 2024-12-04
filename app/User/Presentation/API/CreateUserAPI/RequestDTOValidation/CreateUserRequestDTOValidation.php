@@ -14,6 +14,7 @@ final readonly class CreateUserRequestDTOValidation implements CreateUserRequest
     {
         $validation = Validator::make($data->toArray(), [
             'name' => ['required', 'string'],
+            'vkid' => ['required', 'integer', 'unique:users,vkid'],
         ]);
 
         if ($validation->fails()) {

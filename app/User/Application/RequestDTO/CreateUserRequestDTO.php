@@ -7,7 +7,8 @@ namespace App\User\Application\RequestDTO;
 final readonly class CreateUserRequestDTO implements RequestDTOContract
 {
     public function __construct(
-        private string $name
+        private string $name,
+        private int $vkid
     ) {
     }
 
@@ -16,9 +17,18 @@ final readonly class CreateUserRequestDTO implements RequestDTOContract
         return $this->name;
     }
 
+    public function getVkid(): int
+    {
+        return $this->vkid;
+    }
+
+
     public function toArray(): array
     {
-        return ['name' => $this->name];
+        return [
+            'name' => $this->name,
+            'vkid' => $this->vkid
+        ];
     }
 
     public function toJson(): string
@@ -26,8 +36,4 @@ final readonly class CreateUserRequestDTO implements RequestDTOContract
         return json_encode($this->toArray());
     }
 
-    public static function fromArray(array $data): RequestDTOContract
-    {
-        return new self($data['name']);
-    }
 }

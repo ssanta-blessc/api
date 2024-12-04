@@ -23,21 +23,26 @@ final readonly class CreateUserAPI
     private function create(RequestTemplate $requestTemplate): JsonResponse
     {
         try {
-            return response()->json()->setJson(
-                ResponseTemplate::fromArray(
-                    $this->createUserService->create(
-                        $this->createUserRequestDTOFactory->create($requestTemplate)
-                    )->toArray()
-                )->toJson()
+            $CreateUserResponseDTO = $this->createUserService->create(
+                $this->createUserRequestDTOFactory->create($requestTemplate)
             );
         } catch (CreateUserRequestDTOValidationException $e) {
             return response()->json()->setJson(
-                ResponseTemplate::fromArray([
-                    'success' => false,
-                    'message' => $e->getMessage(),
-                ])->toJson()
-            )->setStatusCode(422);
+                (new ResponseTemplate(
+                    false,
+                    $e->getMessage(),
+                    422
+                ))->toJson()
+            );
         }
+
+        return response()->json()->setJson(
+            (new ResponseTemplate(
+                $CreateUserResponseDTO->getSuccess(),
+                $CreateUserResponseDTO->getMessage(),
+                $CreateUserResponseDTO->getStatus()
+            ))->toJson()
+        );
     }
 
 

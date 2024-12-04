@@ -10,6 +10,7 @@ final readonly class CreateUserResponseDTO implements ResponseDTOContract
     public function __construct(
         private bool $success,
         private string $message,
+        private int $status = 200
     ) {
     }
 
@@ -23,21 +24,23 @@ final readonly class CreateUserResponseDTO implements ResponseDTOContract
         return $this->message;
     }
 
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+
     public function toArray(): array
     {
         return [
             'success' => $this->success,
             'message' => $this->message,
+            'status' => $this->status,
         ];
     }
 
     public function toJson(): string
     {
         return json_encode($this->toArray());
-    }
-
-    public static function fromArray(array $data): ResponseDTOContract
-    {
-        return new self($data['success'], $data['message']);
     }
 }

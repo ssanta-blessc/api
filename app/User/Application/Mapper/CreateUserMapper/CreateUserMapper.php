@@ -7,23 +7,25 @@ namespace App\User\Application\Mapper\CreateUserMapper;
 
 use App\User\Application\RequestDTO\CreateUserRequestDTO;
 use App\User\Application\ResponseDTO\CreateUserResponseDTO;
-use App\User\Core\Domain\Entity\User\ValueObject\CreateUserValueObject;
-use App\User\Core\Domain\Entity\User\ValueObject\NameValueObject;
+use App\User\Core\Domain\Entity\User\ValueObject\RequestValueObject\CreateUserRequestValueObject;
+use App\User\Core\Domain\Entity\User\ValueObject\ResponseValueObject\CreateUserResponseValueObject;
 
 final readonly class CreateUserMapper implements CreateUserMapperContract
 {
-    public function toResponseDTO(CreateUserValueObject $valueObject): CreateUserResponseDTO
+    public function toResponseDTO(CreateUserResponseValueObject $valueObject): CreateUserResponseDTO
     {
         return new CreateUserResponseDTO(
             $valueObject->getSuccess(),
-            $valueObject->getMessage()
+            $valueObject->getMessage(),
+            $valueObject->getStatus()
         );
     }
 
-    public function toNameValueObject(CreateUserRequestDTO $DTO): NameValueObject
+    public function toNameValueObject(CreateUserRequestDTO $DTO): CreateUserRequestValueObject
     {
-        return new NameValueObject(
+        return new CreateUserRequestValueObject(
             $DTO->getName(),
+            $DTO->getVkid()
         );
     }
 

@@ -10,21 +10,15 @@ final class ResponseTemplate extends ResponseBaseTemplate
 {
     public function __construct(
         private readonly bool $success,
-        private readonly string $message
+        private readonly string $message,
+        private readonly int $status = 200,
     ) {
         parent::__construct();
         $this->responseArray['data'] = [
             'success' => $this->success,
             'message' => json_decode($this->message, true),
+            'status' => $this->status,
         ];
-    }
-
-    public static function fromArray(array $data): self
-    {
-        return new self(
-            $data['success'],
-            $data['message']
-        );
     }
 
 }

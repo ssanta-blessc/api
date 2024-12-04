@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\User\Core\Domain\Entity\User;
+namespace App\Authentication\Core\Domain\Entity\User;
 
-final readonly class User
+final readonly class Authentication
 {
     public function __construct(
+        private ?int $id,
         private string $name,
-        private int $vkid,
-        private ?int $id = null
     ) {
     }
 
@@ -21,11 +20,6 @@ final readonly class User
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getVkid(): int
-    {
-        return $this->vkid;
     }
 
 

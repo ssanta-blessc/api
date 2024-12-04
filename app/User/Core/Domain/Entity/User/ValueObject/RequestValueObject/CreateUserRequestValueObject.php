@@ -2,20 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\User\Core\Domain\Entity\User;
+namespace App\User\Core\Domain\Entity\User\ValueObject\RequestValueObject;
 
-final readonly class User
+final readonly class CreateUserRequestValueObject
 {
     public function __construct(
         private string $name,
-        private int $vkid,
-        private ?int $id = null
+        private int $vkid
     ) {
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getName(): string

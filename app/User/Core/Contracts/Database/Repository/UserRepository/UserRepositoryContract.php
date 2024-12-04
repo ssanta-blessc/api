@@ -14,4 +14,6 @@ interface UserRepositoryContract
      * @throws UserRepositoryException
      */
     public function create(User $user): UserModel;
+
+    
 }

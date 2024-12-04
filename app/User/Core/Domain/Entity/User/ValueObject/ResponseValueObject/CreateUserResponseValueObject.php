@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\User\Core\Domain\Entity\User\ValueObject;
+namespace App\User\Core\Domain\Entity\User\ValueObject\ResponseValueObject;
 
-final readonly class CreateUserValueObject
+final readonly class CreateUserResponseValueObject
 {
     public function __construct(
         private bool $success,
         private string $message,
+        private int $status = 200
     ) {
     }
 
@@ -20,6 +21,11 @@ final readonly class CreateUserValueObject
     public function getMessage(): string
     {
         return $this->message;
+    }
+
+    public function getStatus(): int
+    {
+        return $this->status;
     }
 
 
