@@ -47,9 +47,7 @@ final readonly class VKAuthenticationUseCase implements VKAuthenticationUseCaseC
         } catch (ExternalException $e) {
             return new VKAuthenticationResponseValueObject(
                 false,
-                json_encode([
-                    'message' => "Authentication failed",
-                ]),
+                "Authentication failed",
                 null,
                 500
             );
