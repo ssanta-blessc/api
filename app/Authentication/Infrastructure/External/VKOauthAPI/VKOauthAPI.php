@@ -12,14 +12,14 @@ use VK\OAuth\VKOAuth;
 
 final readonly class VKOauthAPI implements VKOauthAPIContract
 {
-    
+
     public function getUser(string $code): VKAuthentication
     {
         $oauth = new VKOAuth('5.199');
 
         try {
             $token = $oauth->getAccessToken(
-                config('services.vk.client_id'),
+                (int)config('services.vk.client_id'),
                 config('services.vk.client_secret'),
                 config('services.vk.redirect_uri'),
                 $code
