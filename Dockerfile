@@ -16,6 +16,7 @@ COPY ./.docker/apache.conf /etc/apache2/sites-available/000-default.conf
 
 COPY . /var/www/html
 
+RUN touch /var/www/html/database/database.sqlite
 RUN chmod -R 777 /var/www/html/
 
 WORKDIR /var/www/html
@@ -24,6 +25,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN cp .env.example .env
 RUN php artisan key:generate
+
+RUN php artisan migrate
 
 RUN php artisan optimize
 RUN php artisan optimize:clear
