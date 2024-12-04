@@ -23,9 +23,9 @@ final readonly class VKOauthAPI implements VKOauthAPIContract
                 config('services.vk.client_secret'),
                 config('services.vk.redirect_uri'),
                 $code
-            );
+            )['access_token'];
 
-            $userData = (new VKApiClient())->users()->get((string)$token);
+            $userData = (new VKApiClient())->users()->get((string)$token)[0];
 
             return new VKAuthentication(
                 $userData['id'],
