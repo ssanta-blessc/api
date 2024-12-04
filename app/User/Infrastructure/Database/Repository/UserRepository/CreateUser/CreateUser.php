@@ -11,13 +11,13 @@ final readonly class CreateUser
 {
     public function create(User $user): UserModel
     {
-        $user = new UserModel([
+        $newUser = new UserModel([
             'name' => $user->getName(),
             'vkid' => $user->getVkid(),
         ]);
 
-        $user->save();
+        $newUser->save();
 
-        return $user;
+        return $newUser;
     }
 }

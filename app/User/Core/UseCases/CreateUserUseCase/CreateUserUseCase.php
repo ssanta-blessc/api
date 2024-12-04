@@ -20,26 +20,26 @@ final readonly class CreateUserUseCase implements CreateUserUseCaseContract
     public function createUser(CreateUserRequestValueObject $valueObject): CreateUserResponseValueObject
     {
         try {
-            $this->userRepository->create(
+            $user = $this->userRepository->create(
                 new User(
                     $valueObject->getName(),
                     $valueObject->getVkid()
                 )
             );
-            return new CreateUserResponseValueObject(
-                true,
-                json_encode([
-                    "message" => "OK",
-                ])
-            );
         } catch (UserRepositoryException $e) {
             return new CreateUserResponseValueObject(
                 false,
-                json_encode([
-                    "message" => "Create user failed",
-                ]),
+                "Create user failed",
                 500
             );
         }
+
+        return new CreateUserResponseValueObject(
+            true,
+            null,
+            $user->getId(),
+            $user->getName(),
+            $user->getVkid(),
+        );
     }
 }

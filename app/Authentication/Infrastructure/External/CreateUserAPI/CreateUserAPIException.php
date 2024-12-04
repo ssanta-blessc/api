@@ -6,7 +6,7 @@ namespace App\Authentication\Infrastructure\External\CreateUserAPI;
 
 use App\Authentication\Infrastructure\External\ExternalException;
 
-final readonly class CreateUserAPIException extends ExternalException
+final class CreateUserAPIException extends ExternalException
 {
 
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Authentication\Application\RequestDTO;
 
-final readonly class AuthenticationRequestDTO implements RequestDTOContract
+final readonly class VKAuthenticationRequestDTO implements RequestDTOContract
 {
     public function __construct(
         private string $code

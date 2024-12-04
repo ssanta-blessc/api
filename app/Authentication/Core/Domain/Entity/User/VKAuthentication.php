@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace App\Authentication\Core\Domain\Entity\User;
 
-final readonly class Authentication
+final readonly class VKAuthentication
 {
     public function __construct(
-        private ?int $id,
+        private int $vkid,
         private string $name,
+        private ?int $id = null,
     ) {
+    }
+
+    public function getVkid(): int
+    {
+        return $this->vkid;
     }
 
     public function getId(): ?int

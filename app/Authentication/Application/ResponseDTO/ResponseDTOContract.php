@@ -6,5 +6,7 @@ namespace App\Authentication\Application\ResponseDTO;
 
 interface ResponseDTOContract
 {
+    public function toArray(): array;
 
+    public function toJson(): string;
 }

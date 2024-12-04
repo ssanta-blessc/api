@@ -30,7 +30,7 @@ final readonly class CreateUserAPI
             return response()->json()->setJson(
                 (new ResponseTemplate(
                     false,
-                    $e->getMessage(),
+                    json_encode(["errors" => json_decode($e->getMessage())]),
                     422
                 ))->toJson()
             );
@@ -39,7 +39,16 @@ final readonly class CreateUserAPI
         return response()->json()->setJson(
             (new ResponseTemplate(
                 $CreateUserResponseDTO->getSuccess(),
-                $CreateUserResponseDTO->getMessage(),
+                json_encode(
+                    array_filter([
+                        "id" => $CreateUserResponseDTO->getId(),
+                        "name" => $CreateUserResponseDTO->getName(),
+                        "vkid" => $CreateUserResponseDTO->getVkid(),
+                        "message" => $CreateUserResponseDTO->getMessage(),
+                    ], function ($value) {
+                        return $value !== null;
+                    })
+                ),
                 $CreateUserResponseDTO->getStatus()
             ))->toJson()
         );
@@ -51,9 +60,9 @@ final readonly class CreateUserAPI
         return $this->create(RequestTemplate::fromArray($data));
     }
 
-    public function createFromData(?string $name = null): JsonResponse
+    public function createFromData(mixed $name = null, mixed $vkid = null): JsonResponse
     {
-        return $this->create(new RequestTemplate($name));
+        return $this->create(new RequestTemplate($name, $vkid));
     }
 
     public function createFromTemplate(RequestTemplate $template): JsonResponse

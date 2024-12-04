@@ -17,6 +17,9 @@ final readonly class CreateUserMapper implements CreateUserMapperContract
         return new CreateUserResponseDTO(
             $valueObject->getSuccess(),
             $valueObject->getMessage(),
+            $valueObject->getId(),
+            $valueObject->getName(),
+            $valueObject->getVkid(),
             $valueObject->getStatus()
         );
     }
