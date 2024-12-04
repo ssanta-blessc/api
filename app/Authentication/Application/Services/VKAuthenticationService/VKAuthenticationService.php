@@ -31,7 +31,7 @@ final readonly class VKAuthenticationService implements VKAuthenticationServiceC
             return $this->VKAuthenticationMapper->toVKAuthenticationResponseDTO(
                 $this->VKAuthenticationUseCase->authenticate(
                     new VKAuthenticationRequestValueObject(
-                        $VKAuthentication->getId(),
+                        $VKAuthentication->getVkid(),
                         $VKAuthentication->getName()
                     )
                 )
