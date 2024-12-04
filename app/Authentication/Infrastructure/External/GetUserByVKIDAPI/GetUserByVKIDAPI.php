@@ -13,7 +13,7 @@ final readonly class GetUserByVKIDAPI implements GetUserByVKIDAPIContract
         private \App\User\Presentation\API\GetUserByVKIDAPI\GetUserByVKIDAPI $getUserByVKIDAPI
     ) {
     }
-
+    
     public function getUserByVKID(int $vkid): VKAuthentication
     {
         $response = $this->getUserByVKIDAPI->getByVKIDFromData($vkid);

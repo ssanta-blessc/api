@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 final readonly class GetUserByVKIDRequestDTOValidation implements GetUserByVKIDRequestDTOValidationContract
 {
-
+    
     public function validate(RequestTemplate $data): void
     {
         $validation = Validator::make($data->toArray(), [
