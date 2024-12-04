@@ -28,7 +28,7 @@ final readonly class CreateUserAPI implements CreateUserAPIContract
             throw new CreateUserAPIException('Error creating user');
         }
 
-        $responseData = $response->getData(true)['data']['info'];
+        $responseData = $response['info'];
         return new VKAuthentication(
             $responseData['vkid'],
             $responseData['name'],

@@ -23,7 +23,7 @@ final readonly class GetUserByVKIDAPI implements GetUserByVKIDAPIContract
             throw new GetUserByVKIDAPIException('User not Found');
         }
 
-        $responseData = $response->getData(true)['data']['info'];
+        $responseData = $response['info'];
         return new VKAuthentication(
             $responseData['vkid'],
             $responseData['name'],
