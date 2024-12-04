@@ -19,7 +19,7 @@ final readonly class VKAuthenticationResponseValueObject
         return $this->success;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
