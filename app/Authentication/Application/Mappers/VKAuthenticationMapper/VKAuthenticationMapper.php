@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Authentication\Application\Mappers\VKAuthenticationMapper;
 
 use App\Authentication\Application\ResponseDTO\VKAuthenticationResponseDTO;
-use App\Authentication\Core\Domain\Entity\User\ValueObject\ResponseValueObject\VKAuthenticationResponseValueObject;
+use App\Authentication\Core\Domain\Entity\VKAuthentication\ValueObject\ResponseValueObject\VKAuthenticationResponseValueObject;
 
 final readonly class VKAuthenticationMapper implements VKAuthenticationMapperContract
 {

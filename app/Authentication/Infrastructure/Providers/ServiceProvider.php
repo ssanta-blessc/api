@@ -11,5 +11,7 @@ final class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->registerDeferredProvider(VKAuthenticationServiceProvider::class);
 
         $this->app->registerDeferredProvider(AuthenticationServiceProvider::class);
+
+        $this->app->registerDeferredProvider(TokenValidationServiceProvider::class);
     }
 }

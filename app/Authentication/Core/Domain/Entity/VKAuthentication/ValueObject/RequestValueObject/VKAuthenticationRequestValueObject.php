@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Authentication\Core\Domain\Entity\User\ValueObject\RequestValueObject;
+namespace App\Authentication\Core\Domain\Entity\VKAuthentication\ValueObject\RequestValueObject;
 
 final readonly class VKAuthenticationRequestValueObject
 {

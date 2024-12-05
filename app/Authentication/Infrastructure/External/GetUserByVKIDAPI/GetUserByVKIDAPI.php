@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Authentication\Infrastructure\External\GetUserByVKIDAPI;
 
 use App\Authentication\Core\Contracts\External\GetUserByVKIDAPI\GetUserByVKIDAPIContract;
-use App\Authentication\Core\Domain\Entity\User\VKAuthentication;
+use App\Authentication\Core\Domain\Entity\VKAuthentication\VKAuthentication;
 
 final readonly class GetUserByVKIDAPI implements GetUserByVKIDAPIContract
 {

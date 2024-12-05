@@ -15,4 +15,6 @@ Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/auth/vk', [AuthenticationController::class, 'vk']);
 
+Route::post('/auth/check', [AuthenticationController::class, 'check']);
+
 Route::get('/user/vkid/{vkid}', [UserController::class, 'show']);

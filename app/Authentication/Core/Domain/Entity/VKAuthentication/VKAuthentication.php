@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Authentication\Core\Domain\Entity\User;
+namespace App\Authentication\Core\Domain\Entity\VKAuthentication;
 
 final readonly class VKAuthentication
 {
@@ -26,6 +26,15 @@ final readonly class VKAuthentication
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'vkid' => $this->vkid,
+            'name' => $this->name,
+            'id' => $this->id,
+        ];
     }
 
 

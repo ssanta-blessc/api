@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Authentication\Core\Domain\Entity\User\ValueObject\ResponseValueObject;
+namespace App\Authentication\Application\ResponseDTO;
 
-final readonly class VKAuthenticationResponseValueObject
+final readonly class TokenValidationResponseDTO implements ResponseDTOContract
 {
+
     public function __construct(
         private bool $success,
         private ?string $message = null,
-        private ?string $token = null,
         private int $status = 200
     ) {
     }
@@ -29,10 +29,17 @@ final readonly class VKAuthenticationResponseValueObject
         return $this->status;
     }
 
-    public function getToken(): ?string
+    public function toArray(): array
     {
-        return $this->token;
+        return [
+            'success' => $this->success,
+            'message' => $this->message,
+            'status' => $this->status,
+        ];
     }
 
-
+    public function toJson(): string
+    {
+        return json_encode($this->toArray());
+    }
 }
