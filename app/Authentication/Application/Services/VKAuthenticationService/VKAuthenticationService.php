@@ -7,7 +7,7 @@ namespace App\Authentication\Application\Services\VKAuthenticationService;
 use App\Authentication\Application\Mappers\VKAuthenticationMapper\VKAuthenticationMapperContract;
 use App\Authentication\Application\RequestDTO\VKAuthenticationRequestDTO;
 use App\Authentication\Application\ResponseDTO\VKAuthenticationResponseDTO;
-use App\Authentication\Core\Domain\Entity\User\ValueObject\RequestValueObject\VKAuthenticationRequestValueObject;
+use App\Authentication\Core\Domain\Entity\VKAuthentication\ValueObject\RequestValueObject\VKAuthenticationRequestValueObject;
 use App\Authentication\Core\UseCases\VKAuthenticationUseCase\VKAuthenticationUseCaseContract;
 use App\Authentication\Infrastructure\External\ExternalException;
 use App\Authentication\Infrastructure\External\VKOauthAPI\VKOauthAPI;

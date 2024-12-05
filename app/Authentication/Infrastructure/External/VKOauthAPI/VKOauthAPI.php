@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Authentication\Infrastructure\External\VKOauthAPI;
 
 use App\Authentication\Core\Contracts\External\VKOauthAPI\VKOauthAPIContract;
-use App\Authentication\Core\Domain\Entity\User\VKAuthentication;
+use App\Authentication\Core\Domain\Entity\VKAuthentication\VKAuthentication;
 use Exception;
 use VK\Client\VKApiClient;
 use VK\OAuth\VKOAuth;

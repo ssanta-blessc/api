@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Authentication\Infrastructure\External\CreateUserAPI;
 
 use App\Authentication\Core\Contracts\External\CreateUserAPI\CreateUserAPIContract;
-use App\Authentication\Core\Domain\Entity\User\VKAuthentication;
+use App\Authentication\Core\Domain\Entity\VKAuthentication\VKAuthentication;
 use App\User\Presentation\API\CreateUserAPI\CreateUserAPI as API;
 
 final readonly class CreateUserAPI implements CreateUserAPIContract
